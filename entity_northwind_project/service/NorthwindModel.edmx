@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NorthwindTR_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="MUSTERILER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUSTERI_AD" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="YETKILI" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADRES" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SEHIR" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ULKE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="IS_FLAG" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONELLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCKN" Type="nchar" MaxLength="11" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SOYAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="CINSIYET" Type="nchar" MaxLength="1" />
+          <Property Name="DOGUM_YERI" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="SIPARIS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERSONEL_ID" Type="int" Nullable="false" />
+          <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="IS_FLAG" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIPARIS_DETAY">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SIPARIS_ID" />
+            <PropertyRef Name="URUN_ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIPARIS_ID" Type="int" Nullable="false" />
+          <Property Name="URUN_ID" Type="int" Nullable="false" />
+          <Property Name="FIYAT" Type="money" Nullable="false" />
+          <Property Name="ADET" Type="int" Nullable="false" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="IS_FLAG" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEDARIKCILER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="100" />
+          <Property Name="YETKILI" Type="nvarchar" MaxLength="100" />
+          <Property Name="ADRES" Type="nvarchar" MaxLength="100" />
+          <Property Name="SEHIR" Type="nvarchar" MaxLength="100" />
+          <Property Name="ULKE" Type="nvarchar" MaxLength="100" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="URUNLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEDARIKCID" Type="int" Nullable="false" />
+          <Property Name="KATEGORID" Type="int" Nullable="false" />
+          <Property Name="FIYAT" Type="money" Nullable="false" />
+          <Property Name="STOK" Type="smallint" Nullable="false" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="IS_FLAG" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_Kategoriler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Kategoriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_musteriID_AD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_musteriID_AD">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MUSTERI_AD" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUSTERI_AD" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_Musteriler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Musteriler">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MUSTERI_AD" />
+            <PropertyRef Name="YETKILI" />
+            <PropertyRef Name="ADRES" />
+            <PropertyRef Name="SEHIR" />
+            <PropertyRef Name="ULKE" />
+            <PropertyRef Name="CREATEDATE" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUSTERI_AD" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="YETKILI" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADRES" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SEHIR" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ULKE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_PERSONEL_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_PERSONEL_LIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCKN" Type="nchar" MaxLength="11" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SOYAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="CINSIYET" Type="nchar" MaxLength="1" />
+          <Property Name="DOGUM_YERI" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_personelAD_ID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_personelAD_ID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_SIPARIS_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_SIPARIS_LIST">
+          <Key>
+            <PropertyRef Name="SIPARIS_ID" />
+            <PropertyRef Name="PERSONEL_ID" />
+            <PropertyRef Name="MUSTERI_ID" />
+            <PropertyRef Name="MUSTERI_AD" />
+          </Key>
+          <Property Name="SIPARIS_ID" Type="int" Nullable="false" />
+          <Property Name="PERSONEL_ID" Type="int" Nullable="false" />
+          <Property Name="PERSONEL_ADYOAD" Type="nvarchar" MaxLength="101" />
+          <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+          <Property Name="MUSTERI_AD" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_SIPARISDETAY_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_SIPARISDETAY_LIST">
+          <Key>
+            <PropertyRef Name="SIPARIS_DETAY_ID" />
+            <PropertyRef Name="URUN_ID" />
+            <PropertyRef Name="URUN_AD" />
+            <PropertyRef Name="FIYAT" />
+            <PropertyRef Name="ADET" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="PERSONEL_ID" />
+            <PropertyRef Name="MUSTERI_ID" />
+          </Key>
+          <Property Name="SIPARIS_DETAY_ID" Type="int" Nullable="false" />
+          <Property Name="URUN_ID" Type="int" Nullable="false" />
+          <Property Name="URUN_AD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIYAT" Type="money" Nullable="false" />
+          <Property Name="ADET" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PERSONEL_ID" Type="int" Nullable="false" />
+          <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_Tedarikci_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Tedarikci_List">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="nvarchar" MaxLength="100" />
+          <Property Name="YETKILI" Type="nvarchar" MaxLength="100" />
+          <Property Name="ADRES" Type="nvarchar" MaxLength="100" />
+          <Property Name="SEHIR" Type="nvarchar" MaxLength="100" />
+          <Property Name="ULKE" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NorthwindTR_DB.dbo.View_Urunler_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Urunler_List">
+          <Key>
+            <PropertyRef Name="URUNLER_ID" />
+            <PropertyRef Name="URUN_AD" />
+            <PropertyRef Name="TEDARIKCID" />
+            <PropertyRef Name="KATEGORID" />
+            <PropertyRef Name="FIYAT" />
+            <PropertyRef Name="STOK" />
+          </Key>
+          <Property Name="URUNLER_ID" Type="int" Nullable="false" />
+          <Property Name="URUN_AD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEDARIKCID" Type="int" Nullable="false" />
+          <Property Name="TEDARIKCI_AD" Type="nvarchar" MaxLength="100" />
+          <Property Name="KATEGORID" Type="int" Nullable="false" />
+          <Property Name="KATEGORI_AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="money" Nullable="false" />
+          <Property Name="STOK" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NorthwindTR_DBModelStoreContainer">
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUSTERILER" EntityType="Self.MUSTERILER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONELLER" EntityType="Self.PERSONELLER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIPARIS" EntityType="Self.SIPARIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIPARIS_DETAY" EntityType="Self.SIPARIS_DETAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEDARIKCILER" EntityType="Self.TEDARIKCILER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="URUNLER" EntityType="Self.URUNLER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Kategoriler" EntityType="Self.View_Kategoriler" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Kategoriler].[ID] AS [ID], 
+    [View_Kategoriler].[AD] AS [AD]
+    FROM [dbo].[View_Kategoriler] AS [View_Kategoriler]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_musteriID_AD" EntityType="Self.View_musteriID_AD" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_musteriID_AD].[ID] AS [ID], 
+    [View_musteriID_AD].[MUSTERI_AD] AS [MUSTERI_AD]
+    FROM [dbo].[View_musteriID_AD] AS [View_musteriID_AD]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Musteriler" EntityType="Self.View_Musteriler" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Musteriler].[ID] AS [ID], 
+    [View_Musteriler].[MUSTERI_AD] AS [MUSTERI_AD], 
+    [View_Musteriler].[YETKILI] AS [YETKILI], 
+    [View_Musteriler].[ADRES] AS [ADRES], 
+    [View_Musteriler].[SEHIR] AS [SEHIR], 
+    [View_Musteriler].[ULKE] AS [ULKE], 
+    [View_Musteriler].[CREATEDATE] AS [CREATEDATE]
+    FROM [dbo].[View_Musteriler] AS [View_Musteriler]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_PERSONEL_LIST" EntityType="Self.View_PERSONEL_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_PERSONEL_LIST].[ID] AS [ID], 
+    [View_PERSONEL_LIST].[TCKN] AS [TCKN], 
+    [View_PERSONEL_LIST].[AD] AS [AD], 
+    [View_PERSONEL_LIST].[SOYAD] AS [SOYAD], 
+    [View_PERSONEL_LIST].[CINSIYET] AS [CINSIYET], 
+    [View_PERSONEL_LIST].[DOGUM_YERI] AS [DOGUM_YERI], 
+    [View_PERSONEL_LIST].[CREATEDATE] AS [CREATEDATE]
+    FROM [dbo].[View_PERSONEL_LIST] AS [View_PERSONEL_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_personelAD_ID" EntityType="Self.View_personelAD_ID" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_personelAD_ID].[ID] AS [ID], 
+    [View_personelAD_ID].[AD] AS [AD]
+    FROM [dbo].[View_personelAD_ID] AS [View_personelAD_ID]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_SIPARIS_LIST" EntityType="Self.View_SIPARIS_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_SIPARIS_LIST].[SIPARIS_ID] AS [SIPARIS_ID], 
+    [View_SIPARIS_LIST].[PERSONEL_ID] AS [PERSONEL_ID], 
+    [View_SIPARIS_LIST].[PERSONEL_ADYOAD] AS [PERSONEL_ADYOAD], 
+    [View_SIPARIS_LIST].[MUSTERI_ID] AS [MUSTERI_ID], 
+    [View_SIPARIS_LIST].[MUSTERI_AD] AS [MUSTERI_AD]
+    FROM [dbo].[View_SIPARIS_LIST] AS [View_SIPARIS_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_SIPARISDETAY_LIST" EntityType="Self.View_SIPARISDETAY_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_SIPARISDETAY_LIST].[SIPARIS_DETAY_ID] AS [SIPARIS_DETAY_ID], 
+    [View_SIPARISDETAY_LIST].[URUN_ID] AS [URUN_ID], 
+    [View_SIPARISDETAY_LIST].[URUN_AD] AS [URUN_AD], 
+    [View_SIPARISDETAY_LIST].[FIYAT] AS [FIYAT], 
+    [View_SIPARISDETAY_LIST].[ADET] AS [ADET], 
+    [View_SIPARISDETAY_LIST].[ID] AS [ID], 
+    [View_SIPARISDETAY_LIST].[PERSONEL_ID] AS [PERSONEL_ID], 
+    [View_SIPARISDETAY_LIST].[MUSTERI_ID] AS [MUSTERI_ID]
+    FROM [dbo].[View_SIPARISDETAY_LIST] AS [View_SIPARISDETAY_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Tedarikci_List" EntityType="Self.View_Tedarikci_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Tedarikci_List].[ID] AS [ID], 
+    [View_Tedarikci_List].[AD] AS [AD], 
+    [View_Tedarikci_List].[YETKILI] AS [YETKILI], 
+    [View_Tedarikci_List].[ADRES] AS [ADRES], 
+    [View_Tedarikci_List].[SEHIR] AS [SEHIR], 
+    [View_Tedarikci_List].[ULKE] AS [ULKE]
+    FROM [dbo].[View_Tedarikci_List] AS [View_Tedarikci_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Urunler_List" EntityType="Self.View_Urunler_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Urunler_List].[URUNLER_ID] AS [URUNLER_ID], 
+    [View_Urunler_List].[URUN_AD] AS [URUN_AD], 
+    [View_Urunler_List].[TEDARIKCID] AS [TEDARIKCID], 
+    [View_Urunler_List].[TEDARIKCI_AD] AS [TEDARIKCI_AD], 
+    [View_Urunler_List].[KATEGORID] AS [KATEGORID], 
+    [View_Urunler_List].[KATEGORI_AD] AS [KATEGORI_AD], 
+    [View_Urunler_List].[FIYAT] AS [FIYAT], 
+    [View_Urunler_List].[STOK] AS [STOK]
+    FROM [dbo].[View_Urunler_List] AS [View_Urunler_List]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NorthwindTR_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MUSTERILER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUSTERI_AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YETKILI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SEHIR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ULKE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONELLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCKN" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CINSIYET" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="DOGUM_YERI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+        </EntityType>
+        <EntityType Name="SIPARIS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" />
+          <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIPARIS_DETAY">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SIPARIS_ID" />
+            <PropertyRef Name="URUN_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIPARIS_ID" Type="Int32" Nullable="false" />
+          <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ADET" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEDARIKCILER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="YETKILI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SEHIR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ULKE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+        </EntityType>
+        <EntityType Name="URUNLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEDARIKCID" Type="Int32" Nullable="false" />
+          <Property Name="KATEGORID" Type="Int32" Nullable="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="STOK" Type="Int16" Nullable="false" />
+          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NorthwindTR_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MUSTERILER" EntityType="Self.MUSTERILER" />
+          <EntitySet Name="PERSONELLER" EntityType="Self.PERSONELLER" />
+          <EntitySet Name="SIPARIS" EntityType="Self.SIPARIS" />
+          <EntitySet Name="SIPARIS_DETAY" EntityType="Self.SIPARIS_DETAY" />
+          <EntitySet Name="TEDARIKCILER" EntityType="Self.TEDARIKCILER" />
+          <EntitySet Name="URUNLER" EntityType="Self.URUNLER" />
+          <EntitySet Name="Kategoriler" EntityType="NorthwindTR_DBModel.Kategoriler" />
+          <EntitySet Name="View_Kategoriler" EntityType="NorthwindTR_DBModel.View_Kategoriler" />
+          <EntitySet Name="View_Musteriler" EntityType="NorthwindTR_DBModel.View_Musteriler" />
+          <EntitySet Name="View_PERSONEL_LIST" EntityType="NorthwindTR_DBModel.View_PERSONEL_LIST" />
+          <EntitySet Name="View_SIPARIS_LIST" EntityType="NorthwindTR_DBModel.View_SIPARIS_LIST" />
+          <EntitySet Name="View_SIPARISDETAY_LIST" EntityType="NorthwindTR_DBModel.View_SIPARISDETAY_LIST" />
+          <EntitySet Name="View_Tedarikci_List" EntityType="NorthwindTR_DBModel.View_Tedarikci_List" />
+          <EntitySet Name="View_Urunler_List" EntityType="NorthwindTR_DBModel.View_Urunler_List" />
+          <EntitySet Name="View_personelAD_ID" EntityType="NorthwindTR_DBModel.View_personelAD_ID" />
+          <EntitySet Name="View_musteriID_AD" EntityType="NorthwindTR_DBModel.View_musteriID_AD" />
+        </EntityContainer>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+        </EntityType>
+        <EntityType Name="View_Kategoriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Musteriler">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MUSTERI_AD" />
+            <PropertyRef Name="YETKILI" />
+            <PropertyRef Name="ADRES" />
+            <PropertyRef Name="SEHIR" />
+            <PropertyRef Name="ULKE" />
+            <PropertyRef Name="CREATEDATE" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUSTERI_AD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="YETKILI" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ADRES" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SEHIR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ULKE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="View_PERSONEL_LIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCKN" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CINSIYET" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="DOGUM_YERI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="View_SIPARIS_LIST">
+          <Key>
+            <PropertyRef Name="SIPARIS_ID" />
+            <PropertyRef Name="PERSONEL_ID" />
+            <PropertyRef Name="MUSTERI_ID" />
+            <PropertyRef Name="MUSTERI_AD" />
+          </Key>
+          <Property Name="SIPARIS_ID" Type="Int32" Nullable="false" />
+          <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" />
+          <Property Name="PERSONEL_ADYOAD" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+          <Property Name="MUSTERI_AD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_SIPARISDETAY_LIST">
+          <Key>
+            <PropertyRef Name="SIPARIS_DETAY_ID" />
+            <PropertyRef Name="URUN_ID" />
+            <PropertyRef Name="URUN_AD" />
+            <PropertyRef Name="FIYAT" />
+            <PropertyRef Name="ADET" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="PERSONEL_ID" />
+            <PropertyRef Name="MUSTERI_ID" />
+          </Key>
+          <Property Name="SIPARIS_DETAY_ID" Type="Int32" Nullable="false" />
+          <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+          <Property Name="URUN_AD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIYAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ADET" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" />
+          <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Tedarikci_List">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="YETKILI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SEHIR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ULKE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Urunler_List">
+          <Key>
+            <PropertyRef Name="URUNLER_ID" />
+            <PropertyRef Name="URUN_AD" />
+            <PropertyRef Name="TEDARIKCID" />
+            <PropertyRef Name="KATEGORID" />
+            <PropertyRef Name="FIYAT" />
+            <PropertyRef Name="STOK" />
+          </Key>
+          <Property Name="URUNLER_ID" Type="Int32" Nullable="false" />
+          <Property Name="URUN_AD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEDARIKCID" Type="Int32" Nullable="false" />
+          <Property Name="TEDARIKCI_AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KATEGORID" Type="Int32" Nullable="false" />
+          <Property Name="KATEGORI_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIYAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="STOK" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_personelAD_ID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_musteriID_AD">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MUSTERI_AD" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUSTERI_AD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NorthwindTR_DBModelStoreContainer" CdmEntityContainer="NorthwindTR_DBEntities">
+          <EntitySetMapping Name="MUSTERILER">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.MUSTERILER">
+              <MappingFragment StoreEntitySet="MUSTERILER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MUSTERI_AD" ColumnName="MUSTERI_AD" />
+                <ScalarProperty Name="YETKILI" ColumnName="YETKILI" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="SEHIR" ColumnName="SEHIR" />
+                <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONELLER">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.PERSONELLER">
+              <MappingFragment StoreEntitySet="PERSONELLER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TCKN" ColumnName="TCKN" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="DOGUM_YERI" ColumnName="DOGUM_YERI" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIPARIS">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.SIPARIS">
+              <MappingFragment StoreEntitySet="SIPARIS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
+                <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIPARIS_DETAY">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.SIPARIS_DETAY">
+              <MappingFragment StoreEntitySet="SIPARIS_DETAY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SIPARIS_ID" ColumnName="SIPARIS_ID" />
+                <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="ADET" ColumnName="ADET" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEDARIKCILER">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.TEDARIKCILER">
+              <MappingFragment StoreEntitySet="TEDARIKCILER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="YETKILI" ColumnName="YETKILI" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="SEHIR" ColumnName="SEHIR" />
+                <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="URUNLER">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.URUNLER">
+              <MappingFragment StoreEntitySet="URUNLER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="TEDARIKCID" ColumnName="TEDARIKCID" />
+                <ScalarProperty Name="KATEGORID" ColumnName="KATEGORID" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Kategoriler">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_Kategoriler">
+              <MappingFragment StoreEntitySet="View_Kategoriler">
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Musteriler">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_Musteriler">
+              <MappingFragment StoreEntitySet="View_Musteriler">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+                <ScalarProperty Name="SEHIR" ColumnName="SEHIR" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="YETKILI" ColumnName="YETKILI" />
+                <ScalarProperty Name="MUSTERI_AD" ColumnName="MUSTERI_AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_PERSONEL_LIST">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_PERSONEL_LIST">
+              <MappingFragment StoreEntitySet="View_PERSONEL_LIST">
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="DOGUM_YERI" ColumnName="DOGUM_YERI" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="TCKN" ColumnName="TCKN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_SIPARIS_LIST">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_SIPARIS_LIST">
+              <MappingFragment StoreEntitySet="View_SIPARIS_LIST">
+                <ScalarProperty Name="MUSTERI_AD" ColumnName="MUSTERI_AD" />
+                <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+                <ScalarProperty Name="PERSONEL_ADYOAD" ColumnName="PERSONEL_ADYOAD" />
+                <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
+                <ScalarProperty Name="SIPARIS_ID" ColumnName="SIPARIS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_SIPARISDETAY_LIST">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_SIPARISDETAY_LIST">
+              <MappingFragment StoreEntitySet="View_SIPARISDETAY_LIST">
+                <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+                <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ADET" ColumnName="ADET" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="URUN_AD" ColumnName="URUN_AD" />
+                <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+                <ScalarProperty Name="SIPARIS_DETAY_ID" ColumnName="SIPARIS_DETAY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Tedarikci_List">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_Tedarikci_List">
+              <MappingFragment StoreEntitySet="View_Tedarikci_List">
+                <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+                <ScalarProperty Name="SEHIR" ColumnName="SEHIR" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="YETKILI" ColumnName="YETKILI" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Urunler_List">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_Urunler_List">
+              <MappingFragment StoreEntitySet="View_Urunler_List">
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="KATEGORI_AD" ColumnName="KATEGORI_AD" />
+                <ScalarProperty Name="KATEGORID" ColumnName="KATEGORID" />
+                <ScalarProperty Name="TEDARIKCI_AD" ColumnName="TEDARIKCI_AD" />
+                <ScalarProperty Name="TEDARIKCID" ColumnName="TEDARIKCID" />
+                <ScalarProperty Name="URUN_AD" ColumnName="URUN_AD" />
+                <ScalarProperty Name="URUNLER_ID" ColumnName="URUNLER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_personelAD_ID">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_personelAD_ID">
+              <MappingFragment StoreEntitySet="View_personelAD_ID">
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_musteriID_AD">
+            <EntityTypeMapping TypeName="NorthwindTR_DBModel.View_musteriID_AD">
+              <MappingFragment StoreEntitySet="View_musteriID_AD">
+                <ScalarProperty Name="MUSTERI_AD" ColumnName="MUSTERI_AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
